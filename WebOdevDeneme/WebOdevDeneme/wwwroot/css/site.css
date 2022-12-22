@@ -1,0 +1,54 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+.btn:hover {
+    transition: opacity linear 0.2s;
+    opacity:0.8;
+}
+body {
+  margin-bottom: 60px;
+}
+.card{
+    height:400px;
+    width: 33% !important;
+    display:inline-block !important;
+}
+#LogInOrSignUp {
+    width: 40%;
+    border: 1px solid black !important;
+    border-radius: 3px;
+    margin-left:30%;
+    padding: 5px;
+}
+.user {
+    border:2px solid black;
+}
+.user:hover {
+    transition: background-color linear 0.2s;
+    background-color: black !important;
+    color: white !important;
+    cursor: pointer;
+}
+.flex-center {
+    display: flex;
+    justify-content: center;
+    height: 100%;
+}
+.flex-center button {
+}
+#login {
+    background-color: black;
+    color: white;
+}

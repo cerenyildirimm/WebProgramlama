@@ -1,0 +1,79 @@
+﻿
+
+<script src="~/lib/jquery/dist/jquery.js"></script>
+
+
+<div class="container ">
+    <div class="flex-center">
+        <button id="login" onclick="LoginClick(); ChangeColor('login','signup')" class="user btn">
+            Log In
+        </button>
+        <button id="signup" onclick="SignupClick(); ChangeColor('signup','login')" class="user btn">
+            Sign Up
+        </button>
+    </div>
+    <div id ="LogInOrSignUp" class="flex-center">
+        <div id="Login">
+            <form asp-action="Home">
+                <div class="form-group">
+                    <label for="Email" class="form-label mt-4">Email address</label>
+                    <input type="email" class="form-control" placeholder="Enter your email">
+                    <small class="form-text text-muted">We'll never share your email with anyone else.</small>
+                </div>
+                <div class="form-group">
+                    <label for="Password" class="form-label mt-4">Password</label>
+                    <input type="password" class="form-control" placeholder="Password">
+                </div>
+                <hr />
+                <input type="submit" class="btn btn-primary" />
+            </form>
+        </div>
+    </div>
+    <div id="Login" style="display:none;">
+        <form asp-action="Home">
+            <div class="form-group">
+                <label for="Email" class="form-label mt-4">Email address</label>
+                <input type="email" class="form-control" placeholder="Enter your email">
+                <small class="form-text text-muted">We'll never share your email with anyone else.</small>
+            </div>
+            <div class="form-group">
+                <label for="Password" class="form-label mt-4">Password</label>
+                <input type="password" class="form-control" placeholder="Password">
+            </div>
+            <hr />
+            <input type="submit" class="btn btn-primary" />
+        </form>
+    </div>
+    <div id="Signup" style="display:none;">
+        <form asp-action="Home">
+            <div class="form-group">
+                <label for="Email" class="form-label mt-4">Email address</label>
+                <input type="email" class="form-control" placeholder="Enter your email">
+                <small class="form-text text-muted">We'll never share your email with anyone else.</small>
+            </div>
+            <div class="form-group">
+                <label for="Password" class="form-label mt-4">Password</label>
+                <input type="password" class="form-control" placeholder="Password">
+            </div>
+            <div class="form-group">
+                <label for="Name" class="form-label mt-4">Name</label>
+                <input type="text" class="form-control" placeholder="Name" />
+            </div>
+            <div class="form-group">
+                <label for="Surname" class="form-label mt-4">Surname</label>
+                <input type="text" class="form-control" placeholder="Surname" />
+            </div>
+            <div class="form-group">
+                <label for="Gender" class="form-label mt-4">Gender</label>
+                <select class="form-select">
+                    <option selected disabled>Choose your gender.</option>
+                    <option>Woman</option>
+                    <option>Man</option>
+                    <option>Don't want to specify</option>
+                </select>
+            </div>
+            <hr />
+            <input type="submit" class="btn btn-primary" />
+        </form>
+    </div>
+</div>
