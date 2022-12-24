@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "bfS7gB8fppQQnQPJf6SVSWkhwDSzlN3WXmnlwkkqM1aTz+bu2d3ae/4zmxeieEEsmS9X0M78BcDPksjKYw2g1g==",
+  "dgSpecHash": "wHpHc2IRHuYGuD+2ZHjzyEcJgManu+GmJIzKLe9VqEYyWJO51GSIeQIbSi3IhSLSZCRXs775qG+bCCpayPgXLQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Monster\\source\\repos\\WebOdevDeneme\\WebOdevDeneme\\WebOdevDeneme.csproj",
+  "projectFilePath": "C:\\Users\\Monster\\source\\repos\\WebProgramlama\\WebOdevDeneme\\WebOdevDeneme\\WebOdevDeneme.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Monster\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\Monster\\.nuget\\packages\\jquery\\2.0.0\\jquery.2.0.0.nupkg.sha512",

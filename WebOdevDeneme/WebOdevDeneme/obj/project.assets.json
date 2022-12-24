@@ -1611,11 +1611,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Monster\\source\\repos\\WebOdevDeneme\\WebOdevDeneme\\WebOdevDeneme.csproj",
+      "projectUniqueName": "C:\\Users\\Monster\\source\\repos\\WebProgramlama\\WebOdevDeneme\\WebOdevDeneme\\WebOdevDeneme.csproj",
       "projectName": "WebOdevDeneme",
-      "projectPath": "C:\\Users\\Monster\\source\\repos\\WebOdevDeneme\\WebOdevDeneme\\WebOdevDeneme.csproj",
+      "projectPath": "C:\\Users\\Monster\\source\\repos\\WebProgramlama\\WebOdevDeneme\\WebOdevDeneme\\WebOdevDeneme.csproj",
       "packagesPath": "C:\\Users\\Monster\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Monster\\source\\repos\\WebOdevDeneme\\WebOdevDeneme\\obj\\",
+      "outputPath": "C:\\Users\\Monster\\source\\repos\\WebProgramlama\\WebOdevDeneme\\WebOdevDeneme\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Monster\\AppData\\Roaming\\NuGet\\NuGet.Config",

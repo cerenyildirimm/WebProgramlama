@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 using WebOdevDeneme.Data;
 using WebOdevDeneme.Entity;
 using WebOdevDeneme.Models;
@@ -9,7 +10,8 @@ namespace WebOdevDeneme.Controllers
 {
     public class ProductController : Controller
     {
-        ShoppingContext _context;
+        readonly ShoppingContext _context;
+
         public ProductController(ShoppingContext context)
         {
             _context = context;
@@ -20,18 +22,12 @@ namespace WebOdevDeneme.Controllers
         }
         public IActionResult List(int? id,string q)
         {
-            var products = _context.Products.AsQueryable();
-            if (id != null)
-            {
-                products = products.Where(products => products.ProductId == id);
-            }
-            if(!string.IsNullOrEmpty(q))
-            {
-                products=products.Where(products=>products.Name.ToLower().Contains(q.ToLower())||products.Description.ToLower().Contains(q.ToLower()));
-            }
+            var products = _context.Products;
+            var producttypes = _context.ProductTypes;
             var model = new ProductsViewModel()
             {
-                Products = products.ToList()
+                Products = products.ToList(),
+                ProductTypes = producttypes.ToList()
             };
             return View("Products",model);
         }
@@ -47,7 +43,7 @@ namespace WebOdevDeneme.Controllers
             {
                 _context.Products.Add(p);
                 _context.SaveChanges();
-
+               
                 TempData["Message"] = $"{p.Name} isimli ürün eklendi.";
                 return RedirectToAction("List");
             }
@@ -63,6 +59,18 @@ namespace WebOdevDeneme.Controllers
         public RedirectToActionResult User()
         {
             return RedirectToAction("Login", "User");
+        }
+        public IActionResult SelectProducts(int id)
+        {
+            var products = _context.Products.AsQueryable();
+            var producttypes = _context.ProductTypes.AsQueryable();
+            products=products.Where(products=>products.ProductTypeId==id);
+            var model = new ProductsViewModel()
+            {
+                Products = products.ToList(),
+                ProductTypes = producttypes.ToList()
+            };
+            return View("Products",model);
         }
         /*
         [HttpGet]

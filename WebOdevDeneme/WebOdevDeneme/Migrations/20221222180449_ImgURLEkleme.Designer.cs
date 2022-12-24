@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using WebOdevDeneme.Data;
@@ -11,9 +12,11 @@ using WebOdevDeneme.Data;
 namespace WebOdevDeneme.Migrations
 {
     [DbContext(typeof(ShoppingContext))]
-    partial class ShoppingContextModelSnapshot : ModelSnapshot
+    [Migration("20221222180449_ImgURLEkleme")]
+    partial class ImgURLEkleme
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -34,7 +37,7 @@ namespace WebOdevDeneme.Migrations
 
                     b.HasIndex("ProductsProductId");
 
-                    b.ToTable("OrderProduct", (string)null);
+                    b.ToTable("OrderProduct");
                 });
 
             modelBuilder.Entity("WebOdevDeneme.Entity.Order", b =>
@@ -55,7 +58,7 @@ namespace WebOdevDeneme.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Orders", (string)null);
+                    b.ToTable("Orders");
                 });
 
             modelBuilder.Entity("WebOdevDeneme.Entity.Product", b =>
@@ -70,6 +73,7 @@ namespace WebOdevDeneme.Migrations
                         .HasColumnType("text");
 
                     b.Property<string>("ImgURL")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("Name")
@@ -85,7 +89,7 @@ namespace WebOdevDeneme.Migrations
 
                     b.HasIndex("ProductTypeId");
 
-                    b.ToTable("Products", (string)null);
+                    b.ToTable("Products");
                 });
 
             modelBuilder.Entity("WebOdevDeneme.Entity.ProductType", b =>
@@ -106,7 +110,7 @@ namespace WebOdevDeneme.Migrations
 
                     b.HasKey("ProductTypeId");
 
-                    b.ToTable("ProductTypes", (string)null);
+                    b.ToTable("ProductTypes");
                 });
 
             modelBuilder.Entity("WebOdevDeneme.Entity.User", b =>
@@ -135,7 +139,7 @@ namespace WebOdevDeneme.Migrations
 
                     b.HasKey("UserId");
 
-                    b.ToTable("Users", (string)null);
+                    b.ToTable("Users");
                 });
 
             modelBuilder.Entity("OrderProduct", b =>

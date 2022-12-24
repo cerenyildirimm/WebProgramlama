@@ -3,6 +3,9 @@
     ViewData["Title"] = "Create";
 }
 
+
+
+
 <h1>Add New Product</h1>
 <div>
     <form asp-action="Create" enctype="multipart/form-data">
@@ -33,6 +36,10 @@
                 <option selected disabled>Choose product type.</option>
             </select>
             <span asp-validation-for="ProductTypeId" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="ImgURL" class="form-label mt-4">Paste product image's URL here.</label>
+            <input asp-for="ImgURL" class="form-control" />
         </div>
         <hr />
         <div class="button">

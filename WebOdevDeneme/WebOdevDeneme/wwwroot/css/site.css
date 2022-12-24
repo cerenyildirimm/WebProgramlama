@@ -19,6 +19,7 @@ html {
 }
 body {
   margin-bottom: 60px;
+  overflow-x:hidden;
 }
 .card{
     height:400px;
@@ -51,4 +52,7 @@ body {
 #login {
     background-color: black;
     color: white;
+}
+#dropdown {
+    float:right;
 }
