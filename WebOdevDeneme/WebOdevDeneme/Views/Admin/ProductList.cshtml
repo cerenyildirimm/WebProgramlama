@@ -1,0 +1,42 @@
+﻿@model AdminProductsViewModel
+<script src="https://kit.fontawesome.com/66c316fb45.js" crossorigin="anonymous"></script>
+
+<a asp-action="Create" class="btn btn-primary btn-sm">Add New Product</a>
+<table class="table table-striped table-bordered table-hover">
+    <thead>
+        <tr>
+            <td style="width:50px">#</td>
+            <td style="width:50px">Name</td>
+            <td>Description</td>
+            <td style="width:50px">Product Type ID</td>
+            <td style="width:50px">Size</td>
+            <td style="width:50px">URL for image</td>
+            <td></td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var product in Model.Products) {
+            <tr>
+                <td>@product.ProductId</td>
+                <td>@product.Name</td>
+                <td>@product.Description</td>
+                <td>
+                    @foreach (var Type in ViewBag.ProductTypes)
+                    {
+                        
+                        if (Type.ProductTypeId==product.ProductTypeId) {
+                            <p>@Type.Name</p>
+                        }
+                    }
+                </td>
+                <td>@product.Size</td>
+                <td><img alt="Bu ürüne henüz fotoğraf eklenmemiş." src="@product.ImgURL" /></td>
+                <td>
+                    <a href="/admin/update/@product.ProductId" class="btn btn-primary btn-sm">Update</a>
+                    <a class="btn btn-danger btn-sm">Delete</a>
+                </td>
+            </tr>
+        }
+
+    </tbody>
+</table>

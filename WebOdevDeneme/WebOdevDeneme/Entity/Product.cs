@@ -17,7 +17,7 @@ namespace WebOdevDeneme.Entity
         public int? Size { get; set; }
         [ForeignKey("ProductType")]
         public int ProductTypeId { get; set; }
-        //public ProductType ProductType { get; set; }
+        //public ProductType ProductTypes { get; set; }
         public string? ImgURL { get; set; }
         public ICollection<Order>? Orders { get; set; }
 

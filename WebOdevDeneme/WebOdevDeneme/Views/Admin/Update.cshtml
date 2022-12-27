@@ -1,0 +1,41 @@
+﻿@model AdminProductEditViewModel
+
+
+<form asp-action="Update" asp-controller="admin" enctype="multipart/form-data">
+    <div class="form">
+        <label asp-for="Name"></label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+    <div class="form">
+        <label asp-for="Description"></label>
+        <input asp-for="Description" class="form-control" />
+        <span asp-validation-for="Description" class="text-danger"></span>
+    </div>
+    <div>
+        <label asp-for="Size" class="form-label mt-4"></label>
+        <select asp-for="Size" class="form-select">
+            <option selected disabled>Choose size.</option>
+            <option>36</option>
+            <option>38</option>
+            <option>40</option>
+            <option>42</option>
+        </select>
+        <span asp-validation-for="Size" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="ProductTypeId" class="form-label mt-4">Product Type</label>
+        <select asp-for="ProductTypeId" asp-items="@ViewBag.ProductTypes" class="form-select">
+            <option selected disabled>Choose product type.</option>
+        </select>
+        <span asp-validation-for="ProductTypeId" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="ImgURL" class="form-label mt-4">Paste product image's URL here.</label>
+        <input asp-for="ImgURL" class="form-control" />
+    </div>
+    <hr />
+    <div class="button">
+        <input type="submit" class="btn btn-primary" id="btnGonder" />
+    </div>
+</form>

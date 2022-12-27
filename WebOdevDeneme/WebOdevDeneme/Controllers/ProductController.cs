@@ -70,6 +70,10 @@ namespace WebOdevDeneme.Controllers
                 Products = products.ToList(),
                 ProductTypes = producttypes.ToList()
             };
+            if (model.Products.Count==0)
+            {
+                return View("ürün yok");
+            }
             return View("Products",model);
         }
         /*
