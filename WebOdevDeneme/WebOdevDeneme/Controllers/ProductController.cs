@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using WebOdevDeneme.Data;
-using WebOdevDeneme.Entity;
 using WebOdevDeneme.Models;
 
 namespace WebOdevDeneme.Controllers
@@ -20,16 +19,10 @@ namespace WebOdevDeneme.Controllers
         {
             return View();
         }
-        public IActionResult List(int? id,string q)
+        public async Task<IActionResult> List(int? id,string q)
         {
-            var products = _context.Products;
-            var producttypes = _context.ProductTypes;
-            var model = new ProductsViewModel()
-            {
-                Products = products.ToList(),
-                ProductTypes = producttypes.ToList()
-            };
-            return View("Products",model);
+            var entity = _context.Products.Include(k => k.ProductTypes);
+            return View("Products",await entity.ToListAsync());
         }
         public IActionResult Create()
         {
@@ -37,18 +30,18 @@ namespace WebOdevDeneme.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult Create(Product p)
+        public async Task<IActionResult> Create(Product p)
         {
             if (ModelState.IsValid)
             {
                 _context.Products.Add(p);
-                _context.SaveChanges();
+                await _context.SaveChangesAsync();
                
                 TempData["Message"] = $"{p.Name} isimli ürün eklendi.";
                 return RedirectToAction("List");
             }
             ViewBag.ProductTypes = new SelectList(_context.ProductTypes.ToList(), "ProductTypeId","Name");
-            return View();
+            return View(p);
         }
         
         [HttpGet]
@@ -62,19 +55,8 @@ namespace WebOdevDeneme.Controllers
         }
         public IActionResult SelectProducts(int id)
         {
-            var products = _context.Products.AsQueryable();
-            var producttypes = _context.ProductTypes.AsQueryable();
-            products=products.Where(products=>products.ProductTypeId==id);
-            var model = new ProductsViewModel()
-            {
-                Products = products.ToList(),
-                ProductTypes = producttypes.ToList()
-            };
-            if (model.Products.Count==0)
-            {
-                return View("ürün yok");
-            }
-            return View("Products",model);
+            var products = _context.Products.Include(p => p.ProductTypes).AsQueryable();
+            return View("Products",products);
         }
         /*
         [HttpGet]

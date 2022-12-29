@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Mvc;
 
-namespace WebOdevDeneme.Entity
+namespace WebOdevDeneme.Models
 {
     public class Order
     {

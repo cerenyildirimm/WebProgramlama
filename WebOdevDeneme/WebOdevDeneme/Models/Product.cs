@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 
-namespace WebOdevDeneme.Entity
+namespace WebOdevDeneme.Models
 {
     public class Product
     {
@@ -17,7 +17,7 @@ namespace WebOdevDeneme.Entity
         public int? Size { get; set; }
         [ForeignKey("ProductType")]
         public int ProductTypeId { get; set; }
-        //public ProductType ProductTypes { get; set; }
+        public ProductType ProductTypes { get; set; }
         public string? ImgURL { get; set; }
         public ICollection<Order>? Orders { get; set; }
 

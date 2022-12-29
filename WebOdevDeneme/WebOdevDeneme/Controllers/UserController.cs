@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using WebOdevDeneme.Data;
-using WebOdevDeneme.Entity;
+using WebOdevDeneme.Models;
 
 namespace WebOdevDeneme.Controllers
 {

@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using WebOdevDeneme.Entity;
+using WebOdevDeneme.Models;
 
 namespace WebOdevDeneme.Data
 {

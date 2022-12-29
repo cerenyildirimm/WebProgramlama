@@ -11,3 +11,5 @@ function ChangeColor(id1,id2) {
     document.getElementById(id2).style.color = 'black';
 
 }
+function Visible(id) {
+}

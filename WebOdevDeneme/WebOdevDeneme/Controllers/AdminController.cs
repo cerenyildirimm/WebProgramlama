@@ -2,7 +2,6 @@
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using WebOdevDeneme.Data;
-using WebOdevDeneme.Entity;
 using WebOdevDeneme.Models;
 
 namespace WebOdevDeneme.Controllers
@@ -14,18 +13,16 @@ namespace WebOdevDeneme.Controllers
         {
             _context = context;
         }
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            var entity= _context.Products.Include(p => p.ProductTypes);
+            return View(await entity.ToListAsync());
         }
-        public IActionResult ProductList()
+        public async Task<IActionResult> ProductList()
         {
-            ViewBag.ProductTypes = _context.ProductTypes.ToList();
-            
-            return View(new AdminProductsViewModel
-            {
-                Products = _context.Products.ToList()
-            }); ;
+            var entity = _context.Products.Include(p => p.ProductTypes);
+
+            return View(await entity.ToListAsync());
         }
         public IActionResult Create()
         {
@@ -33,12 +30,13 @@ namespace WebOdevDeneme.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult Create(Product p)
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create(Product p)
         {
             if (ModelState.IsValid)
             {
                 _context.Products.Add(p);
-                _context.SaveChanges();
+                await _context.SaveChangesAsync();
 
                 TempData["Message"] = $"{p.Name} isimli ürün eklendi.";
                 return RedirectToAction("ProductList");
@@ -47,37 +45,40 @@ namespace WebOdevDeneme.Controllers
             return View();
         }
         [HttpGet]
-        public IActionResult Update(int? id)
+        public async Task<IActionResult> Update(int? id)
         {
-
-            ViewBag.ProductTypes = new SelectList(_context.ProductTypes.ToList(), "ProductTypeId", "Name");
-            var entity = _context.Products.Select(p => new AdminProductEditViewModel
+            if (id == null)
             {
-                ProductId = p.ProductId,
-                Name=p.Name,
-                Description=p.Description,
-                ProductTypeId=p.ProductTypeId,
-                ImgURL=p.ImgURL,
-                Size=p.Size
-            });
+                return NotFound();
+            }
+            var entity = await  _context.Products.FindAsync(id);
+            if (entity == null)
+            {
+                return NotFound();
+            }
 
             return View(entity);
         }
         [HttpPost]
-        public IActionResult Update(AdminProductEditViewModel model)
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Update(int id,Product product)
         {
 
-            if (ModelState.IsValid)
-            {
-                var entity= _context.Products.Find(model.ProductId);
-                entity.Name = model.Name;
-                entity.Description = model.Description;
-                entity.ProductTypeId = model.ProductTypeId;
-                entity.ImgURL = model.ImgURL;
-                entity.Size = model.Size;
-                _context.SaveChanges();
+
+
+
+            var entity =  _context.Products.FirstOrDefault(p=>p.ProductId==id);
+                if (entity==null)
+                {
+                    return NotFound();
+                }
+                entity.Name = product.Name;
+                entity.Description = product.Description;
+                entity.ImgURL = product.ImgURL;
+                entity.Size = product.Size;
+                await _context.SaveChangesAsync();
                 return RedirectToAction("ProductList");
-            }
+            
             ViewBag.ProductTypes = new SelectList(_context.ProductTypes.ToList(), "ProductTypeId", "Name");
             return View();
         }

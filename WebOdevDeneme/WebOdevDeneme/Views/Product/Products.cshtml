@@ -1,4 +1,4 @@
-﻿@model ProductsViewModel
+﻿@model IEnumerable<WebOdevDeneme.Models.Product>
 
 
 <div class="container">
@@ -6,7 +6,7 @@
         <div class="btn-group" role="group">
             <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
             <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                @foreach (var item in Model.ProductTypes) {
+                @foreach (var item in Model) {
 
                     <a class="dropdown-item" asp-action="SelectProducts" asp-route-id="@item.ProductTypeId"
                     onclick="">@item.Name</a>
@@ -15,7 +15,7 @@
             </div>
         </div>
     </div>
-    @foreach (var item in Model.Products)
+    @foreach (var item in Model)
     {
         <div class="card border-secondary mb-3" style="max-width: 20rem">
             <a asp-action="Details" asp-route-id="@item.ProductId"><div class="card-header">@item.Name</div></a>
