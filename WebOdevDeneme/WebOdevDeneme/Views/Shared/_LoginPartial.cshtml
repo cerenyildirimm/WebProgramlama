@@ -13,14 +13,15 @@
             <button  type="submit" class="nav-link btn btn-link text-dark">Logout</button>
         </form>
     </li>
+    <li class="nav-item">
+                            <a classclass="nav-link" href="admin/create">Admin Create</a>
+    </li>
 }
 else
 {
+    
     <li class="nav-item">
-        <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Register">Register</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login">Login</a>
+        <a asp-action="User" class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login">Login</a>
     </li>
 }
 </ul>

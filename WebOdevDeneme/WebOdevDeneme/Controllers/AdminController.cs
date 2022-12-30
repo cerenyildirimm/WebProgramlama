@@ -82,5 +82,13 @@ namespace WebOdevDeneme.Controllers
             ViewBag.ProductTypes = new SelectList(_context.ProductTypes.ToList(), "ProductTypeId", "Name");
             return View();
         }
+        public async Task<IActionResult> Delete (int id)
+        {
+            var product = await _context.Products.FindAsync(id);
+            _context.Products.Remove(product);
+            await _context.SaveChangesAsync();
+            TempData["Message"] = "Deletion is Succesful!";
+            return RedirectToAction("ProductList");
+        }
     }
 }
